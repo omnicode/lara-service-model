@@ -1,0 +1,39 @@
+{
+    "name": "omnicode/lara-service-model",
+    "description": "Laravel Service Model layer for CRUD.",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "http://omnicode.am/",
+    "authors": [
+        {
+            "name": "Omnicode",
+            "email": "info@omnicode.am",
+            "homepage": "http://omnicode.am/"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaraServiceModel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.1",
+            "ext-pdo": "1.0.0"
+        }
+    },
+    "minimum-stability": "dev"
+}
