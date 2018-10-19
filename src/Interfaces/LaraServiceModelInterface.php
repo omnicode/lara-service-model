@@ -196,6 +196,12 @@ interface LaraServiceModelInterface
 
     /**
      * @param string $column
+     * @return mixed
+     */
+    public function pushWhereNull(string $column);
+
+    /**
+     * @param string $column
      * @param string $order
      * @return array
      */

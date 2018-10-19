@@ -49,7 +49,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      * @param $currentModel
      * @param $currentValidator
      */
-    public function __construct($currentModel, $currentValidator)
+    public function __construct($currentModel, $currentValidator = null)
     {
         $this->setBaseModel($currentModel);
         $this->setBaseValidator($currentValidator);
@@ -454,39 +454,50 @@ class LaraServiceModel implements LaraServiceModelInterface
     /**
      * Push where in query
      *
-     * @param $attribute
+     * @param $column
      * @param string $cmpOrValue
      * @param null $value
      * @return LaraServiceModel|mixed
      */
-    public function pushWhere($attribute, $cmpOrValue = '=', $value = null)
+    public function pushWhere($column, $cmpOrValue = '=', $value = null)
     {
-        return $this->where($attribute, $cmpOrValue, $value = null);
+        return $this->where($column, $cmpOrValue, $value = null);
     }
 
     /**
      * Push orWhere in query
      *
-     * @param $attribute
+     * @param $column
      * @param string $cmpOrValue
      * @param null $value
      * @return LaraServiceModel|mixed
      */
-    public function pushOrWhere($attribute, $cmpOrValue = '=', $value = null)
+    public function pushOrWhere($column, $cmpOrValue = '=', $value = null)
     {
-        return $this->where($attribute, $cmpOrValue, $value, 'orWhere');
+        return $this->where($column, $cmpOrValue, $value, 'orWhere');
+    }
+
+    /**
+     * Push whereNull in query
+     * 
+     * @param string $column
+     * @return LaraServiceModel|mixed
+     */
+    public function pushWhereNull(string $column)
+    {
+        return $this->query->whereNull($column);
     }
 
     /**
      * Push OrderBy in query
      *
-     * @param string $attribute
+     * @param string $column
      * @param string $order
      * @return array|mixed
      */
-    public function pushOrderBy(string $attribute, $order = 'asc')
+    public function pushOrderBy(string $column, $order = 'asc')
     {
-        $this->query->orderBy($attribute, $order);
+        $this->query->orderBy($column, $order);
         return $this;
     }
 
@@ -530,26 +541,26 @@ class LaraServiceModel implements LaraServiceModelInterface
     /**
      * Push whereBetween in query
      *
-     * @param string $attribute
+     * @param string $column
      * @param array $values
      * @return $this
      */
-    public function pushWhereBetween(string $attribute, array $values)
+    public function pushWhereBetween(string $column, array $values)
     {
-        $$this->betweenAndIn($attribute, $values);
+        $$this->betweenAndIn($column, $values);
         return $this;
     }
 
     /**
      * Push whereNotBetween in query
      *
-     * @param string $attribute
+     * @param string $column
      * @param array $values
      * @return $this
      */
-    public function pushWhereNotBetween(string $attribute, array $values)
+    public function pushWhereNotBetween(string $column, array $values)
     {
-        $this->betweenAndIn($attribute, $values, 'notBetween');
+        $this->betweenAndIn($column, $values, 'notBetween');
         return $this;
     }
 
@@ -560,22 +571,22 @@ class LaraServiceModel implements LaraServiceModelInterface
      * @param array $values
      * @return $this
      */
-    public function pushWhereIn(string $attribute, array $values)
+    public function pushWhereIn(string $column, array $values)
     {
-        $this->betweenAndIn($attribute, $values, 'in');
+        $this->betweenAndIn($column, $values, 'in');
         return $this;
     }
 
     /**
      * Push whereNotIn in query
      *
-     * @param string $attribute
+     * @param string $column
      * @param array $values
      * @return $this
      */
-    public function pushWhereNotIn(string $attribute, array $values)
+    public function pushWhereNotIn(string $column, array $values)
     {
-        $this->betweenAndIn($attribute, $values, 'notIn');
+        $this->betweenAndIn($column, $values, 'notIn');
         return $this;
     }
 
@@ -586,11 +597,11 @@ class LaraServiceModel implements LaraServiceModelInterface
      * @param null $search
      * @return $this
      */
-    public function pushSearch($attribute, $search = null)
+    public function pushSearch($column, $search = null)
     {
-        $searchArray = $attribute;
+        $searchArray = $column;
         if ( ! is_array($search)) {
-            $searchArray = [$attribute => $search];
+            $searchArray = [$column => $search];
         }
 
         foreach ($searchArray as $key => $value) {
