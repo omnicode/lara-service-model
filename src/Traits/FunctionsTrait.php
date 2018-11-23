@@ -97,7 +97,6 @@ trait FunctionsTrait
     {
         $where = $column;
         if ( ! is_array($column) && ! is_callable($column)) {
-            dd($column);
             if (is_null($value)) {
                 $value = $cmp;
                 $cmp = '=';
