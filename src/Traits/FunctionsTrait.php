@@ -96,7 +96,8 @@ trait FunctionsTrait
     protected function where($column, $cmp = '=', $value = null, string $type = 'where')
     {
         $where = $column;
-        if ( ! is_array($column)) {
+        if ( ! is_array($column) && ! is_callable($column)) {
+            dd($column);
             if (is_null($value)) {
                 $value = $cmp;
                 $cmp = '=';
@@ -135,8 +136,14 @@ trait FunctionsTrait
      * @param array $relOptions
      * @param string $type
      */
-    protected function with($relation, array $relOptions, string $type = 'with')
+    protected function with($relation, $relOptions, string $type = 'with')
     {
+        if (is_callable($relOptions)) {
+            $this->query->{$type}([$relation => $relOptions]);
+            return;
+        }
+
+        $relOptions = (array)$relOptions;
         $this->query->{$type}([$relation => function ($query) use ($relOptions) {
             foreach ($relOptions as $relOptionName => $relOption) {
                 $method = $this->clearRelationOption($relOptionName);
