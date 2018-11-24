@@ -106,6 +106,13 @@ interface LaraServiceModelInterface
     public function deleteBy(string $column, int $id, string $deletedMethod = 'delete');
 
     /**
+     * Delete all items
+     *
+     * @return mixed
+     */
+    public function deleteAll();
+
+    /**
      * Destroy item
      *
      * @param int $id
@@ -113,6 +120,13 @@ interface LaraServiceModelInterface
      * @return mixed
      */
     public function destroy(int $id, string $deletedMethod = 'delete');
+
+    /**
+     * Destroy all items
+     *
+     * @return mixed
+     */
+    public function destroyAll();
 
     /**
      * Get first item
@@ -233,7 +247,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition where in query
-     * 
+     *
      * @param $column
      * @param string $cmp
      * @param null $value
@@ -243,7 +257,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition orWhere in query
-     * 
+     *
      * @param $column
      * @param string $cmp
      * @param null $value
@@ -253,7 +267,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition whereNull in query
-     * 
+     *
      * @param string $column
      * @return mixed
      */
@@ -261,7 +275,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition OrderBy in query
-     * 
+     *
      * @param string $column
      * @param string $order
      * @return array
@@ -270,7 +284,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition limit in query
-     * 
+     *
      * @param int $limit
      * @return mixed
      */
@@ -278,7 +292,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition offset in query
-     * 
+     *
      * @param int $count
      * @return mixed
      */
@@ -286,7 +300,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition select in query
-     * 
+     *
      * @param $columns
      * @return mixed
      */
@@ -294,7 +308,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition whereBetween in query
-     * 
+     *
      * @param string $column
      * @param array $values
      * @return mixed
@@ -303,7 +317,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition whereNotBetween in query
-     * 
+     *
      * @param string $column
      * @param array $values
      * @return mixed
@@ -312,7 +326,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition whereIn in query
-     * 
+     *
      * @param string $column
      * @param array $values
      * @return mixed
@@ -321,7 +335,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition whereNotIn in query
-     * 
+     *
      * @param string $column
      * @param array $values
      * @return mixed
@@ -330,7 +344,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition Search in query
-     * 
+     *
      * @param $column
      * @param null $search
      * @return mixed
@@ -339,7 +353,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition whereDate in query
-     * 
+     *
      * @param string $column
      * @param string $value
      * @return mixed
@@ -348,7 +362,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition whereMonth in query
-     * 
+     *
      * @param string $column
      * @param string $value
      * @return mixed
@@ -357,7 +371,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition whereDay in query
-     * 
+     *
      * @param string $column
      * @param string $value
      * @return mixed
@@ -366,7 +380,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition whereTime in query
-     * 
+     *
      * @param string $column
      * @param string $value
      * @return mixed
@@ -375,7 +389,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition with relation in query
-     * 
+     *
      * @param $with
      * @return mixed
      */
@@ -383,7 +397,7 @@ interface LaraServiceModelInterface
 
     /**
      * Condition withCount relation in query
-     * 
+     *
      * @param $with
      * @return mixed
      */
@@ -391,7 +405,7 @@ interface LaraServiceModelInterface
 
     /**
      * Add new validation errors
-     * 
+     *
      * @param $errors
      * @return mixed
      */
@@ -399,28 +413,28 @@ interface LaraServiceModelInterface
 
     /**
      * Get all validation errors
-     * 
+     *
      * @return mixed
      */
     public function getValidationErrors();
 
     /**
      * Start transaction for database
-     * 
+     *
      * @return mixed
      */
     public function startTransaction();
 
     /**
      * Commit transaction for database
-     * 
+     *
      * @return mixed
      */
     public function commitTransaction();
 
     /**
      * Rollback transaction for database
-     * 
+     *
      * @return mixed
      */
     public function rollbackTransaction();
