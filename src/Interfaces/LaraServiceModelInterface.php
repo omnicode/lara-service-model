@@ -106,6 +106,13 @@ interface LaraServiceModelInterface
     public function deleteBy(string $column, int $id, string $deletedMethod = 'delete');
 
     /**
+     * Delete all items
+     *
+     * @return mixed
+     */
+    public function deleteAll();
+
+    /**
      * Destroy item
      *
      * @param int $id
@@ -113,6 +120,13 @@ interface LaraServiceModelInterface
      * @return mixed
      */
     public function destroy(int $id, string $deletedMethod = 'delete');
+
+    /**
+     * Destroy all items
+     *
+     * @return mixed
+     */
+    public function destroyAll();
 
     /**
      * Get first item
