@@ -559,6 +559,54 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Condition skip in query
+     *
+     * @param int $count
+     * @return mixed
+     */
+    public function pushSkip(int $count)
+    {
+        $this->query->skip($count);
+        return $this;
+    }
+
+    /**
+     * Condition take in query
+     *
+     * @param int $count
+     * @return mixed
+     */
+    public function pushTake(int $count)
+    {
+        $this->query->take($count);
+        return $this;
+    }
+
+    /**
+     * Condition having in query
+     *
+     * @param $column
+     * @param string $cmpOrValue
+     * @param null $value
+     * @return mixed
+     */
+    public function pushHaving($column, $cmpOrValue = '=', $value = null)
+    {
+        return $this->where($column, $cmpOrValue, $value, 'having');
+    }
+
+    /**
+     * Condition groupBy in query
+     *
+     * @param mixed ...$columns
+     * @return mixed
+     */
+    public function pushGroupBy(...$columns)
+    {
+        return $this->query->groupBy(...$columns);
+    }
+
+    /**
      * Condition select in query
      *
      * @param $columns
