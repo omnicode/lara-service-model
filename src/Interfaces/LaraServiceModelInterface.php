@@ -47,36 +47,44 @@ interface LaraServiceModelInterface
     public function simplePaginate(int $count = 20, $columns = null): Paginator;
 
     /**
+     * Validate and create new data
+     *
      * @param array $data
-     * @param string $ruleValidate
+     * @param null|string $ruleValidate
      * @return mixed
      */
-    public function create(array $data, string $ruleValidate = 'default');
+    public function create(array $data, ?string $ruleValidate = 'default');
 
     /**
+     * Validate and create new data and relations
+     *
      * @param array $data
      * @param $relations
      * @param string $ruleValidate
      * @return mixed
      */
-    public function createWith(array $data, $relations, string $ruleValidate = 'default');
+    public function createWith(array $data, $relations, ?string $ruleValidate = 'default');
 
     /**
+     * Validate and update data
+     *
      * @param array $data
      * @param $id
-     * @param string $ruleValidate
+     * @param null|string $ruleValidate
      * @return mixed
      */
-    public function update(array $data, $id, string $ruleValidate = 'default');
+    public function update(array $data, $id, ?string $ruleValidate = 'default');
 
     /**
+     * Validate, update data and relations
+     *
      * @param array $data
      * @param $id
      * @param null $relations
-     * @param string $rule
+     * @param null|string $rule
      * @return mixed
      */
-    public function updateWith(array $data, $id, $relations = null, $rule = 'default');
+    public function updateWith(array $data, $id, $relations = null, ?string $ruleValidate = 'default');
 
     /**
      * @param int $id
