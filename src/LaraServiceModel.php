@@ -65,6 +65,7 @@ class LaraServiceModel implements LaraServiceModelInterface
         $this->baseModel = $currentModel;
         $this->resetQuery();
     }
+    
     /**
      * Make Model Based abstract modelClass and set baseModel
      *
@@ -138,7 +139,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function create(array $data, string $ruleValidate = 'default')
     {
-        if ( ! $this->validate($this->baseValidator, $data)) {
+        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data)) {
             return false;
         }
 
@@ -155,7 +156,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function createWith(array $data, $relations, string $ruleValidate = 'default')
     {
-        if ( ! $this->validate($this->baseValidator, $data)) {
+        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data)) {
             return false;
         }
 
@@ -175,7 +176,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     {
         $data[$this->getKeyName()] = $id;
 
-        if ( ! $this->validate($this->baseValidator, $data, ['rule' => $ruleValidate])) {
+        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data, ['rule' => $ruleValidate])) {
             return false;
         }
 
@@ -198,11 +199,11 @@ class LaraServiceModel implements LaraServiceModelInterface
      * @param string $rule
      * @return bool|mixed
      */
-    public function updateWith(array $data, $id, $relations = null, $rule = 'default')
+    public function updateWith(array $data, $id, $relations = null, $ruleValidate = 'default')
     {
         $data[$this->getKeyName()] = $id;
 
-        if ( ! $this->validate($this->baseValidator, $data, ['rule' => $rule])) {
+        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data, ['rule' => $rule])) {
             return false;
         }
 
@@ -479,7 +480,7 @@ class LaraServiceModel implements LaraServiceModelInterface
 
     /**
      * Push whereNull in query
-     * 
+     *
      * @param string $column
      * @return LaraServiceModel|mixed
      */
