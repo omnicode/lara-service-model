@@ -7,13 +7,13 @@ Generalized Service layer
 Run the following command from you terminal:
 
  ```bash
- composer require "omnicode/lara-service-model: 3.0.*"
+ composer require "omnicode/lara-service-model: 4.0.*"
  ```
 
 or add this to require section in your composer.json file:
 
  ```
- "omnicode/lara-service-model": "3.0.*"
+ "omnicode/lara-service-model": "4.0.*"
  ```
 
 then run ```composer update```
@@ -99,7 +99,11 @@ The following methods are available in LaraServiceModel:
     
     $this->deleteBy(string $column, int $id, string $deletedMethod = 'delete');
     
+    $this->deleteAll(); // Use caution (you can delete all data from the table)
+    
     $this->destroy(int $id, string $deletedMethod = 'delete');
+    
+    $this->destroyAll(); // Use caution (you can delete all data from the table)
     
     $this->first($columns = null);
     
@@ -134,6 +138,14 @@ The following methods are available in LaraServiceModel:
     $this->pushLimit(int $limit);
     
     $this->pushOffset(int $count);
+    
+    $this->pushSkip(int $count);
+    
+    $this->pushTake(int $count);
+    
+    $this->pushHaving($column, $cmpOrValue = '=', $value = null);
+    
+    $this->pushGroupBy(...$columns);
     
     $this->pushSelect($columns);
     
