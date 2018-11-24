@@ -134,10 +134,10 @@ class LaraServiceModel implements LaraServiceModelInterface
      * Validate and create new data
      *
      * @param array $data
-     * @param string $ruleValidate
+     * @param null|string $ruleValidate
      * @return bool|mixed
      */
-    public function create(array $data, string $ruleValidate = 'default')
+    public function create(array $data, ?string $ruleValidate = 'default')
     {
         if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data)) {
             return false;
@@ -151,10 +151,10 @@ class LaraServiceModel implements LaraServiceModelInterface
      *
      * @param array $data
      * @param $relations
-     * @param string $ruleValidate
+     * @param null|string $ruleValidate
      * @return bool|mixed
      */
-    public function createWith(array $data, $relations, string $ruleValidate = 'default')
+    public function createWith(array $data, $relations, ?string $ruleValidate = 'default')
     {
         if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data)) {
             return false;
@@ -168,11 +168,11 @@ class LaraServiceModel implements LaraServiceModelInterface
      * Validate and update data
      *
      * @param array $data
-     * @param array $id
-     * @param string $ruleValidate
+     * @param $id
+     * @param null|string $ruleValidate
      * @return bool|mixed
      */
-    public function update(array $data, $id, string $ruleValidate = 'default')
+    public function update(array $data, $id, ?string $ruleValidate = 'default')
     {
         $data[$this->getKeyName()] = $id;
 
@@ -196,10 +196,10 @@ class LaraServiceModel implements LaraServiceModelInterface
      * @param array $data
      * @param $id
      * @param null $relations
-     * @param string $rule
+     * @param null|string $ruleValidate
      * @return bool|mixed
      */
-    public function updateWith(array $data, $id, $relations = null, $ruleValidate = 'default')
+    public function updateWith(array $data, $id, $relations = null, ?string $ruleValidate = 'default')
     {
         $data[$this->getKeyName()] = $id;
 
