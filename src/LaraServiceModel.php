@@ -461,7 +461,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function pushWhere($column, $cmpOrValue = '=', $value = null)
     {
-        return $this->where($column, $cmpOrValue, $value = null);
+        return $this->where($column, $cmpOrValue, $value);
     }
 
     /**
