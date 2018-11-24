@@ -299,6 +299,40 @@ interface LaraServiceModelInterface
     public function pushOffset(int $count);
 
     /**
+     * Condition skip in query
+     *
+     * @param int $count
+     * @return mixed
+     */
+    public function pushSkip(int $count);
+
+    /**
+     * Condition take in query
+     *
+     * @param int $count
+     * @return mixed
+     */
+    public function pushTake(int $count);
+
+    /**
+     * Condition having in query
+     *
+     * @param $column
+     * @param string $cmpOrValue
+     * @param null $value
+     * @return mixed
+     */
+    public function pushHaving($column, $cmpOrValue = '=', $value = null);
+
+    /**
+     * Condition groupBy in query
+     *
+     * @param mixed ...$columns
+     * @return mixed
+     */
+    public function pushGroupBy(...$columns);
+
+    /**
      * Condition select in query
      *
      * @param $columns
