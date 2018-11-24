@@ -247,6 +247,18 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Delete all items
+     *
+     * @return mixed
+     */
+    public function deleteAll()
+    {
+        $result = $this->query->delete();
+        $this->resetQuery();
+        return $result;
+    }
+
+    /**
      * Destroy item
      *
      * @param int $id
@@ -256,6 +268,16 @@ class LaraServiceModel implements LaraServiceModelInterface
     public function destroy(int $id, string $deletedMethod = 'delete')
     {
         return $this->delete($id, $deletedMethod);
+    }
+
+    /**
+     * Destroy all items
+     *
+     * @return mixed
+     */
+    public function destroyAll()
+    {
+        return $this->deleteAll();
     }
 
     /**
