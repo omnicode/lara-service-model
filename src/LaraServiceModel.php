@@ -65,7 +65,7 @@ class LaraServiceModel implements LaraServiceModelInterface
         $this->baseModel = $currentModel;
         $this->resetQuery();
     }
-    
+
     /**
      * Make Model Based abstract modelClass and set baseModel
      *
@@ -384,6 +384,8 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Find items count
+     *
      * @param null|string $attribute
      * @param string $cmpOrValue
      * @param null $value
@@ -410,6 +412,8 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Exist key
+     *
      * @param $id
      * @return bool
      */
@@ -420,6 +424,8 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Exist key where
+     *
      * @param $attribute
      * @param $value
      * @return bool
@@ -433,6 +439,8 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Increment column
+     *
      * @param string $column
      * @param int $value
      * @return mixed
@@ -443,6 +451,8 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Decrement column
+     *
      * @param string $column
      * @param int $value
      * @return mixed
@@ -453,7 +463,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push where in query
+     * Condition where in query
      *
      * @param $column
      * @param string $cmpOrValue
@@ -466,7 +476,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push orWhere in query
+     * Condition orWhere in query
      *
      * @param $column
      * @param string $cmpOrValue
@@ -479,7 +489,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push whereNull in query
+     * Condition whereNull in query
      *
      * @param string $column
      * @return LaraServiceModel|mixed
@@ -490,7 +500,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push OrderBy in query
+     * Condition OrderBy in query
      *
      * @param string $column
      * @param string $order
@@ -503,7 +513,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push limit in query
+     * Condition limit in query
      *
      * @param int $limit
      * @return mixed
@@ -515,7 +525,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push offset in query
+     * Condition offset in query
      *
      * @param int $count
      * @return mixed
@@ -527,7 +537,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push select in query
+     * Condition select in query
      *
      * @param $columns
      * @return $this
@@ -540,7 +550,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push whereBetween in query
+     * Condition whereBetween in query
      *
      * @param string $column
      * @param array $values
@@ -553,7 +563,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push whereNotBetween in query
+     * Condition whereNotBetween in query
      *
      * @param string $column
      * @param array $values
@@ -566,7 +576,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push whereIn in query
+     * Condition whereIn in query
      *
      * @param string $attribute
      * @param array $values
@@ -579,7 +589,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push whereNotIn in query
+     * Condition whereNotIn in query
      *
      * @param string $column
      * @param array $values
@@ -592,7 +602,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push Search in query
+     * Condition Search in query
      *
      * @param $attribute
      * @param null $search
@@ -613,7 +623,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push whereDate in query
+     * Condition whereDate in query
      *
      * @param string $date
      * @param string $value
@@ -626,7 +636,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push whereMonth in query
+     * Condition whereMonth in query
      *
      * @param string $date
      * @param string $value
@@ -639,7 +649,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push whereDay in query
+     * Condition whereDay in query
      *
      * @param string $day
      * @param string $value
@@ -652,7 +662,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push whereDay in query
+     * Condition whereTime in query
      *
      * @param string $time
      * @param string $value
@@ -665,7 +675,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push with relation in query
+     * Condition with relation in query
      *
      * @param $with
      * @return mixed
@@ -689,7 +699,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
-     * Push withCount relation in query
+     * Condition withCount relation in query
      *
      * @param $with
      * @return mixed
@@ -717,6 +727,8 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Add new validation errors
+     *
      * @param $errors
      */
     public function setValidationErrors($errors)
@@ -725,6 +737,8 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Get all validation errors
+     *
      * @return mixed returns the validation errors
      */
     public function getValidationErrors()
@@ -733,6 +747,8 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Start transaction for database
+     *
      * @return mixed
      */
     public function startTransaction()
@@ -741,6 +757,8 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Commit transaction for database
+     *
      * @return mixed
      */
     public function commitTransaction()
@@ -749,6 +767,8 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Rollback transaction for database
+     *
      * @return mixed
      */
     public function rollbackTransaction()
