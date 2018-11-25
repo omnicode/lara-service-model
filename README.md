@@ -133,6 +133,14 @@ The following methods are available in LaraServiceModel:
     
     $this->pushWhereNull($column);
     
+    $this->pushHas(string $relation, $cmpOrValue = '=', $value = null);
+    
+    $this->pushWhereHas(string $relation, $condition);
+    
+    $this->pushDoesntHave(string $relation);
+    
+    $this->pushWhereDoesntHave(string $relation, $condition);
+    
     $this->pushOrderBy(string $column, $order = 'asc');
     
     $this->pushLimit(int $limit);
