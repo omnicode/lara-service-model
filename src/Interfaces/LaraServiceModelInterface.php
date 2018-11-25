@@ -274,6 +274,42 @@ interface LaraServiceModelInterface
     public function pushWhereNull(string $column);
 
     /**
+     * Condition has in query
+     *
+     * @param string $relation
+     * @param string $cmpOrValue
+     * @param null $value
+     * @return mixed
+     */
+    public function pushHas(string $relation, $cmpOrValue = '=', $value = null);
+
+    /**
+     * Condition whereHas in query
+     *
+     * @param string $relation
+     * @param $condition
+     * @return mixed
+     */
+    public function pushWhereHas(string $relation, $condition);
+
+    /**
+     * Condition doesntHave in query
+     *
+     * @param string $relation
+     * @return mixed
+     */
+    public function pushDoesntHave(string $relation);
+
+    /**
+     * Condition whereDoesntHave in query
+     *
+     * @param string $relation
+     * @param $condition
+     * @return mixed
+     */
+    public function pushWhereDoesntHave(string $relation, $condition);
+
+    /**
      * Condition OrderBy in query
      *
      * @param string $column
