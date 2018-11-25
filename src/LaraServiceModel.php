@@ -514,11 +514,68 @@ class LaraServiceModel implements LaraServiceModelInterface
      * Condition whereNull in query
      *
      * @param string $column
-     * @return LaraServiceModel|mixed
+     * @return mixed
      */
     public function pushWhereNull(string $column)
     {
         return $this->query->whereNull($column);
+    }
+
+    /**
+     * Condition has in query
+     *
+     * @param string $relation
+     * @param string $cmpOrValue
+     * @param null $value
+     * @return mixed
+     */
+    public function pushHas(string $relation, $cmpOrValue = '=', $value = null)
+    {
+        $condition = [$relation];
+        if (is_null($value) && $cmpOrValue !== '=') {
+            $condition[] = '=';
+            $condition[] = $cmpOrValue;
+        } else if (!empty($value)) {
+            $condition[] = $cmpOrValue;
+            $condition[] = $value;
+        }
+
+        return $this->query->has(...$condition);
+    }
+
+    /**
+     * Condition whereHas in query
+     *
+     * @param string $relation
+     * @param $condition
+     * @return mixed
+     */
+    public function pushWhereHas(string $relation, $condition)
+    {
+        return $this->query->whereHas($relation, $condition);
+    }
+
+    /**
+     * Condition doesntHave in query
+     *
+     * @param string $relation
+     * @return mixed
+     */
+    public function pushDoesntHave(string $relation)
+    {
+        return $this->query->doesntHave($relation);
+    }
+
+    /**
+     * Condition whereDoesntHave in query
+     *
+     * @param string $relation
+     * @param $condition
+     * @return mixed
+     */
+    public function pushWhereDoesntHave(string $relation, $condition)
+    {
+        return $this->query->whereDoesntHave($relation, $condition);
     }
 
     /**
