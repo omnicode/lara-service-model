@@ -1,6 +1,6 @@
 # Lara-Service-Model
 
-Generalized Service layer test
+Generalized Service layer
 
 ## Installation
 
