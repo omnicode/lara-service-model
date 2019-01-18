@@ -101,7 +101,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function paginate(int $perPage = 20, $columns = null, $group = self::GROUP, $options = []): array
     {
-        $usedColumns = $this->getIndexableColumns(true, false, $group);
+        $usedColumns = $this->getIndexableColumns(false, false, $group);
         if ( ! is_null($columns)) {
             $columns = (array)$columns;
             $usedColumns = $this->fixSelectedColumns($columns);
