@@ -203,7 +203,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     {
         $data[$this->getKeyName()] = $id;
 
-        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data, ['rule' => $rule])) {
+        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data, ['rule' => $ruleValidate])) {
             return false;
         }
 
