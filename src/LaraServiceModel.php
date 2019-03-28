@@ -139,7 +139,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function create(array $data, ?string $ruleValidate = 'default')
     {
-        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data)) {
+        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data, ['rule' => $ruleValidate])) {
             return false;
         }
 
@@ -156,7 +156,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function createWith(array $data, $relations, ?string $ruleValidate = 'default')
     {
-        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data)) {
+        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data, ['rule' => $ruleValidate])) {
             return false;
         }
 
@@ -203,7 +203,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     {
         $data[$this->getKeyName()] = $id;
 
-        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data, ['rule' => $rule])) {
+        if ( ! is_null($ruleValidate) && ! $this->validate($this->baseValidator, $data, ['rule' => $ruleValidate])) {
             return false;
         }
 
