@@ -288,7 +288,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function first($columns = null)
     {
-        $this->fixSelectedColumns($columns);
+        $columns = $this->fixSelectedColumns($columns);
         $result = $this->query->first($columns);
         $this->resetQuery();
         return $result;
@@ -302,7 +302,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function last($columns = null)
     {
-        $this->fixSelectedColumns($columns);
+        $columns = $this->fixSelectedColumns($columns);
         $this->pushOrderBy($this->getKeyName(), 'desc');
         return $this->first($columns);
     }
@@ -332,7 +332,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function findBy(string $attribute, $value, $columns = null)
     {
-        $this->fixSelectedColumns($columns);
+        $columns = $this->fixSelectedColumns($columns);
         $this->pushWhere($attribute, $value);
         $item = $this->query->first($columns);
         $this->resetQuery();
@@ -366,10 +366,9 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function findAllBy(string $attribute, $value, $columns = null)
     {
-        $this->fixSelectedColumns($columns);
-        $this->pushSelect($columns);
+        $columns = $this->fixSelectedColumns($columns);
         $this->pushWhere($attribute, $value);
-        $items = $this->query->get();
+        $items = $this->query->get($columns);
         $this->resetQuery();
         return $items;
     }
@@ -469,7 +468,9 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function increment(string $column, $value = 1)
     {
-        return $this->query->increment($column, $value);
+        $result = $this->query->increment($column, $value);
+        $this->resetQuery();
+        return $result;
     }
 
     /**
@@ -481,7 +482,9 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function decrement(string $column, $value = 1)
     {
-        return $this->query->decrement($column, $value);
+        $result = $this->query->decrement($column, $value);
+        $this->resetQuery();
+        return $result;
     }
 
     /**
@@ -518,7 +521,8 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function pushWhereNull(string $column)
     {
-        return $this->query->whereNull($column);
+        $this->query->whereNull($column);
+        return $this;
     }
 
     /**
@@ -540,7 +544,8 @@ class LaraServiceModel implements LaraServiceModelInterface
             $condition[] = $value;
         }
 
-        return $this->query->has(...$condition);
+        $this->query->has(...$condition);
+        return $this;
     }
 
     /**
@@ -552,7 +557,8 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function pushWhereHas(string $relation, $condition)
     {
-        return $this->query->whereHas($relation, $condition);
+        $this->query->whereHas($relation, $condition);
+        return $this;
     }
 
     /**
@@ -563,7 +569,8 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function pushDoesntHave(string $relation)
     {
-        return $this->query->doesntHave($relation);
+        $this->query->doesntHave($relation);
+        return $this;
     }
 
     /**
@@ -575,7 +582,8 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function pushWhereDoesntHave(string $relation, $condition)
     {
-        return $this->query->whereDoesntHave($relation, $condition);
+        $this->query->whereDoesntHave($relation, $condition);
+        return $this;
     }
 
     /**
@@ -660,7 +668,8 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function pushGroupBy(...$columns)
     {
-        return $this->query->groupBy(...$columns);
+        $this->query->groupBy(...$columns);
+        return $this;
     }
 
     /**
@@ -685,7 +694,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function pushWhereBetween(string $column, array $values)
     {
-        $$this->betweenAndIn($column, $values);
+        $this->betweenAndIn($column, $values);
         return $this;
     }
 
@@ -705,7 +714,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     /**
      * Condition whereIn in query
      *
-     * @param string $attribute
+     * @param string $column
      * @param array $values
      * @return $this
      */
@@ -724,8 +733,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function pushWhereNotIn(string $column, array $values)
     {
-        $this->betweenAndIn($column, $values, 'notIn');
-        return $this;
+        return $this->betweenAndIn($column, $values, 'notIn');
     }
 
     /**
