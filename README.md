@@ -89,6 +89,8 @@ The following methods are available in LaraServiceModel:
     
     $this->create(array $data, string $ruleValidate = 'default');
     
+    $this->createMany(array $data, $useTransaction = false): bool;
+    
     $this->createWith(array $data, $relations, string $ruleValidate = 'default');
     
     $this->update(array $data, $id, string $ruleValidate = 'default');
