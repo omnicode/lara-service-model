@@ -56,6 +56,15 @@ interface LaraServiceModelInterface
     public function create(array $data, ?string $ruleValidate = 'default');
 
     /**
+     * Create Many Method
+     *
+     * @param array $data
+     * @param bool $useTransaction
+     * @return bool
+     */
+    public function createMany(array $data, $useTransaction = false): bool;
+
+    /**
      * Validate and create new data and relations
      *
      * @param array $data
