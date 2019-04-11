@@ -147,6 +147,33 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
 
     /**
+     * Create Many Method
+     *
+     * @param array $data
+     * @param bool $useTransaction
+     * @return bool
+     */
+    public function createMany(array $data, $useTransaction = false): bool
+    {
+        if ($useTransaction) {
+            $this->startTransaction();
+        }
+
+        $result = $this->query->createMany($data);
+        if ($result) {
+            if ($useTransaction) {
+                $this->commitTransaction();
+            }
+            return true;
+        }
+
+        if ($useTransaction) {
+            $this->rollbackTransaction();
+        }
+        return false;
+    }
+
+    /**
      * Validate and create new data and relations
      *
      * @param array $data
