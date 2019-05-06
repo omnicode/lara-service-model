@@ -879,7 +879,7 @@ class LaraServiceModel implements LaraServiceModelInterface
                 $relOptions = [];
             }
 
-            if ( ! isset($relOptions['pushWhere'])) {
+            if ( ! isset($relOptions['pushWhere']) && ! empty($relOptions)) {
                 $relOptions = ['pushWhere' => $relOptions];
             }
 
