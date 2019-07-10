@@ -95,6 +95,8 @@ The following methods are available in LaraServiceModel:
     
     $this->update(array $data, $id, string $ruleValidate = 'default');
     
+    $this->updateBy(string $column, $value, array $data);
+    
     $this->updateWith(array $data, $id, $relations = null, $rule = 'default');
     
     $this->delete(int $id, string $deletedMethod = 'delete');
