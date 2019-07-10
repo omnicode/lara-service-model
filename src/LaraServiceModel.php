@@ -216,6 +216,21 @@ class LaraServiceModel implements LaraServiceModelInterface
         $this->resetQuery();
         return $result;
     }
+    
+    /**
+     * Update items by column
+     *
+     * @param string $column
+     * @param $value
+     * @param array $data
+     * @return mixed
+     */
+    public function updateBy(string $column, $value, array $data)
+    {
+        $result = $this->query->where($column, $value)->update($data);
+        $this->resetQuery();
+        return $result;
+    }
 
     /**
      * Validate, update data and relations
