@@ -83,6 +83,16 @@ interface LaraServiceModelInterface
      * @return mixed
      */
     public function update(array $data, $id, ?string $ruleValidate = 'default');
+    
+    /**
+     * Update items by column
+     *
+     * @param string $column
+     * @param $value
+     * @param array $data
+     * @return mixed
+     */
+    public function updateBy(string $column, $value, array $data);
 
     /**
      * Validate, update data and relations
