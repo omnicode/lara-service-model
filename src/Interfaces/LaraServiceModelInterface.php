@@ -34,10 +34,11 @@ interface LaraServiceModelInterface
     /**
      * @param int $count
      * @param null $columns
+     * @param bool $isFull
      * @param string $group
      * @return array
      */
-    public function paginate(int $count = 20, $columns = null, $group = 'list'): array;
+    public function paginate(int $count = 20, $columns = null, bool $isFull = false, $group = 'list'): array;
 
     /**
      * @param int $count
