@@ -95,13 +95,14 @@ class LaraServiceModel implements LaraServiceModelInterface
      *
      * @param int $perPage
      * @param null $columns
+     * @param bool $isFull
      * @param string $group
      * @param array $options
      * @return array
      */
-    public function paginate(int $perPage = 20, $columns = null, $group = self::GROUP, $options = []): array
+    public function paginate(int $perPage = 20, $columns = null, bool $isFull = false, $group = self::GROUP, $options = []): array
     {
-        $usedColumns = $this->getIndexableColumns(true, false, $group);
+        $usedColumns = $this->getIndexableColumns($isFull, false, $group);
         if ( ! is_null($columns)) {
             $columns = (array)$columns;
             $usedColumns = $this->fixSelectedColumns($columns);
