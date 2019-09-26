@@ -49,7 +49,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      * @param $currentModel
      * @param $currentValidator
      */
-    public function __construct($currentModel, $currentValidator = null)
+    public function __construct($currentModel = null, $currentValidator = null)
     {
         $this->setBaseModel($currentModel);
         $this->setBaseValidator($currentValidator);
@@ -63,7 +63,9 @@ class LaraServiceModel implements LaraServiceModelInterface
     public function setBaseModel($currentModel)
     {
         $this->baseModel = $currentModel;
-        $this->resetQuery();
+        if ( ! is_null($currentModel)) {
+           $this->resetQuery();
+       }
     }
 
     /**
