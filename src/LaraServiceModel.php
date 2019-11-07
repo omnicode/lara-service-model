@@ -544,7 +544,7 @@ class LaraServiceModel implements LaraServiceModelInterface
     }
     
     /**
-     * Condition whereNull in query
+     * Condition whereNotNull in query
      *
      * @param string $column
      * @return mixed
