@@ -270,20 +270,20 @@ interface LaraServiceModelInterface
      *
      * @param $column
      * @param string $cmp
-     * @param null $value
+     * @param bool $value
      * @return mixed
      */
-    public function pushWhere($column, $cmp = '=', $value = null);
+    public function pushWhere($column, $cmp = '=', $value = false);
 
     /**
      * Condition orWhere in query
      *
      * @param $column
      * @param string $cmp
-     * @param null $value
+     * @param bool $value
      * @return mixed
      */
-    public function pushOrWhere($column, $cmp = '=', $value = null);
+    public function pushOrWhere($column, $cmp = '=', $value = false);
 
     /**
      * Condition whereNull in query
@@ -375,10 +375,10 @@ interface LaraServiceModelInterface
      *
      * @param $column
      * @param string $cmpOrValue
-     * @param null $value
+     * @param bool $value
      * @return mixed
      */
-    public function pushHaving($column, $cmpOrValue = '=', $value = null);
+    public function pushHaving($column, $cmpOrValue = '=', $value = false);
 
     /**
      * Condition groupBy in query
