@@ -137,6 +137,8 @@ The following methods are available in LaraServiceModel:
     
     $this->pushWhereNull($column);
     
+    $this->pushWhereNotNull($column);
+    
     $this->pushHas(string $relation, $cmpOrValue = '=', $value = null);
     
     $this->pushWhereHas(string $relation, $condition);
