@@ -292,6 +292,14 @@ interface LaraServiceModelInterface
      * @return mixed
      */
     public function pushWhereNull(string $column);
+    
+    /**
+     * Condition whereNotNull in query
+     *
+     * @param string $column
+     * @return mixed
+     */
+    public function pushWhereNotNull(string $column);
 
     /**
      * Condition has in query
