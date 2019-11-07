@@ -89,7 +89,7 @@ trait FunctionsTrait
     /**
      * @param $column
      * @param string $cmp
-     * @param null $value
+     * @param bool $value
      * @param string $type
      * @return $this
      */
@@ -97,7 +97,7 @@ trait FunctionsTrait
     {
         $where = $column;
         if (is_string($column) || (! is_array($column) && ! is_callable($column))) {
-            if (!$value) {
+            if ($value === false) {
                 $value = $cmp;
                 $cmp = '=';
             }
