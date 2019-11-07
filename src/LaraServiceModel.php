@@ -527,7 +527,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      * @param null $value
      * @return LaraServiceModel|mixed
      */
-    public function pushOrWhere($column, $cmpOrValue = '=', $value = null)
+    public function pushOrWhere($column, $cmpOrValue = '=', $value = false)
     {
         return $this->where($column, $cmpOrValue, $value, 'orWhere');
     }
@@ -669,7 +669,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      * @param null $value
      * @return mixed
      */
-    public function pushHaving($column, $cmpOrValue = '=', $value = null)
+    public function pushHaving($column, $cmpOrValue = '=', $value = false)
     {
         return $this->where($column, $cmpOrValue, $value, 'having');
     }
