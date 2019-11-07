@@ -542,6 +542,17 @@ class LaraServiceModel implements LaraServiceModelInterface
     {
         return $this->query->whereNull($column);
     }
+    
+    /**
+     * Condition whereNull in query
+     *
+     * @param string $column
+     * @return mixed
+     */
+    public function pushWhereNotNull(string $column)
+    {
+        return $this->query->whereNotNull($column);
+    }
 
     /**
      * Condition has in query
