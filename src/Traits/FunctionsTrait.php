@@ -93,11 +93,11 @@ trait FunctionsTrait
      * @param string $type
      * @return $this
      */
-    protected function where($column, $cmp = '=', $value = null, string $type = 'where')
+    protected function where($column, $cmp = '=', $value = false, string $type = 'where')
     {
         $where = $column;
         if (is_string($column) || (! is_array($column) && ! is_callable($column))) {
-            if (is_null($value)) {
+            if (!$value) {
                 $value = $cmp;
                 $cmp = '=';
             }
