@@ -511,7 +511,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      *
      * @param $column
      * @param string $cmpOrValue
-     * @param null $value
+     * @param bool $value
      * @return LaraServiceModel|mixed
      */
     public function pushWhere($column, $cmpOrValue = '=', $value = false)
@@ -524,7 +524,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      *
      * @param $column
      * @param string $cmpOrValue
-     * @param null $value
+     * @param bool $value
      * @return LaraServiceModel|mixed
      */
     public function pushOrWhere($column, $cmpOrValue = '=', $value = false)
@@ -666,7 +666,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      *
      * @param $column
      * @param string $cmpOrValue
-     * @param null $value
+     * @param bool $value
      * @return mixed
      */
     public function pushHaving($column, $cmpOrValue = '=', $value = false)
