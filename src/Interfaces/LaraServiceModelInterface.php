@@ -312,7 +312,7 @@ interface LaraServiceModelInterface
     public function pushWhereHas(string $relation, $condition);
     
     /**
-     * Condition whereOrHas in query
+     * Condition orWhereHas in query
      *
      * @param string $relation
      * @param $condition
