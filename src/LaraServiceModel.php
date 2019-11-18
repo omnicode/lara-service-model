@@ -621,6 +621,18 @@ class LaraServiceModel implements LaraServiceModelInterface
         $this->query->whereHas($relation, $condition);
         return $this;
     }
+    
+    /**
+     * Condition orWhereHas in query
+     *
+     * @param string $relation
+     * @param $condition
+     * @return mixed
+     */
+    public function pushOrWhereHas(string $relation, $condition)
+    {
+        return $this->query->orWhereHas($relation, $condition);
+    }
 
     /**
      * Condition doesntHave in query
