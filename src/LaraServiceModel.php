@@ -585,7 +585,7 @@ class LaraServiceModel implements LaraServiceModelInterface
      */
     public function pushWhereHas(string $relation, $condition)
     {
-        return $this->query->whereHas($relation, $condition);
+        return $this->query->orWhereHas($relation, $condition);
     }
     
     /**
