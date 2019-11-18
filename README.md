@@ -143,6 +143,8 @@ The following methods are available in LaraServiceModel:
     
     $this->pushWhereHas(string $relation, $condition);
     
+    $this->pushOrWhereHas(string $relation, $condition);
+    
     $this->pushDoesntHave(string $relation);
     
     $this->pushWhereDoesntHave(string $relation, $condition);
