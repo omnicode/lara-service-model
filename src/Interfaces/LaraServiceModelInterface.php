@@ -332,10 +332,10 @@ interface LaraServiceModelInterface
      * Condition whereDoesntHave in query
      *
      * @param string $relation
-     * @param $condition
+     * @param null $condition
      * @return mixed
      */
-    public function pushWhereDoesntHave(string $relation, $condition);
+    public function pushWhereDoesntHave(string $relation, $condition = null);
 
     /**
      * Condition OrderBy in query
