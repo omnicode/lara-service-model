@@ -310,6 +310,15 @@ interface LaraServiceModelInterface
      * @return mixed
      */
     public function pushWhereHas(string $relation, $condition);
+    
+    /**
+     * Condition whereOrHas in query
+     *
+     * @param string $relation
+     * @param $condition
+     * @return mixed
+     */
+    public function pushOrWhereHas(string $relation, $condition);
 
     /**
      * Condition doesntHave in query
