@@ -146,7 +146,10 @@ trait FunctionsTrait
         $this->query->{$type}([$relation => function ($query) use ($relOptions) {
             foreach ($relOptions as $relOptionName => $relOption) {
                 $method = $this->clearRelationOption($relOptionName);
-                $option = [$relOption];
+                $option = $relOption;
+                if ($method !== 'whereIn') {
+                    $option = [$relOption];
+                }
 
                 if ($this->isMethodWhere($method)) {
                     if ( ! $this->isMultiArray($relOption)) {
