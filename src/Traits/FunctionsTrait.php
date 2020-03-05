@@ -147,7 +147,7 @@ trait FunctionsTrait
             foreach ($relOptions as $relOptionName => $relOption) {
                 $method = $this->clearRelationOption($relOptionName);
                 $option = $relOption;
-                if ($method !== 'whereIn') {
+                if ($method !== 'whereIn' && $method !== 'orderBy') {
                     $option = [$relOption];
                 }
 
