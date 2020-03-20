@@ -14,7 +14,7 @@
     "require": {
         "php": ">=7.1",
         "ext-json": "*",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.8.*",
         "omnicode/lara-model": "^4.0",
         "omnicode/lara-tools": "^0.1.0",
         "omnicode/lara-validation": "^4.0",
