@@ -3,6 +3,7 @@
 namespace LaraServiceModel\Traits;
 
 use LaraSupport\Facades\LaraDB;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Trait Functions
@@ -66,7 +67,7 @@ trait FunctionsTrait
      */
     protected function getSortableColumns($column = null, $group = self::GROUP)
     {
-        return $this->query->getModel()->getSortable($column, $group);
+        return Schema::hasColumn($this->baseModel->getTable(), $column) && $this->query->getModel()->getSortable($column, $group);
     }
 
     /**
